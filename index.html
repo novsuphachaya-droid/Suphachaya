@@ -13,7 +13,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Custom Color Config & Animations (Pastel Soft Blue Theme) -->
+    <!-- Custom Color Config & Animations (Pastel Soft Blue Cute Minimal Theme) -->
     <script>
         tailwind.config = {
             theme: {
@@ -38,22 +38,23 @@
                     animation: {
                         'float': 'float 4s ease-in-out infinite',
                         'float-delayed': 'float 4s ease-in-out 2s infinite',
-                        'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+                        'bounce-soft': 'bounceSoft 2.5s ease-in-out infinite',
                         'wiggle': 'wiggle 2s ease-in-out infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-10px) rotate(1.5deg)' },
+                            '50%': { transform: 'translateY(-8px) rotate(1.5deg)' },
                         },
                         bounceSoft: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-6px)' },
+                            '50%': { transform: 'translateY(-5px)' },
                         },
                         wiggle: {
-                            '0%, 100%': { transform: 'rotate(-3deg)' },
-                            '50%': { transform: 'rotate(3deg)' },
+                            '0%, 100%': { transform: 'rotate(-2deg)' },
+                            '50%': { transform: 'rotate(2deg)' },
                         }
                     }
                 }
@@ -63,7 +64,7 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #F0F9FF;
+            background-color: #F8FAFC;
             color: #0C4A6E;
         }
         .font-cute {
@@ -74,35 +75,32 @@
             background-image: radial-gradient(#BAE6FD 2px, transparent 2px);
             background-size: 28px 28px;
         }
-        /* Soft Floating Card Shadows */
+        /* Soft Minimal Floating Card Shadows */
         .cute-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             border: 2px solid #E0F2FE;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .cute-card:hover {
-            transform: translateY(-5px) scale(1.01);
+            transform: translateY(-4px) scale(1.01);
             border-color: #7DD3FC;
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.15), 0 8px 10px -6px rgba(56, 189, 248, 0.1);
-        }
-        .cute-badge {
-            background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+            box-shadow: 0 16px 24px -6px rgba(56, 189, 248, 0.12), 0 6px 8px -4px rgba(56, 189, 248, 0.08);
         }
     </style>
 </head>
-<body class="bg-[#F0F9FF] text-pastel-dark selection:bg-pastel-primary selection:text-white flex flex-col min-h-screen relative overflow-x-hidden">
+<body class="bg-[#F8FAFC] text-pastel-dark selection:bg-pastel-primary selection:text-white flex flex-col min-h-screen relative overflow-x-hidden">
 
     <!-- Notification Toast for Copying -->
-    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-24 opacity-0 transition-all duration-300 bg-white/95 text-pastel-dark px-6 py-4 rounded-3xl shadow-2xl flex items-center space-x-3 z-50 border-2 border-pastel-soft backdrop-blur-md">
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-24 opacity-0 transition-all duration-300 bg-white/95 text-pastel-dark px-6 py-4 rounded-3xl shadow-xl flex items-center space-x-3 z-50 border-2 border-pastel-soft backdrop-blur-md">
         <div class="p-2 bg-pastel-blue text-pastel-vibrant rounded-2xl">
-            <i data-lucide="sparkles" class="w-5 h-5 animate-spin"></i>
+            <i data-lucide="sparkles" class="w-5 h-5 animate-spin-slow"></i>
         </div>
         <span id="toast-message" class="text-sm font-semibold">คัดลอกข้อมูลเรียบร้อยแล้วค่ะ! ✨</span>
     </div>
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/70 border-b-2 border-pastel-blue/60 transition-all">
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/80 border-b-2 border-pastel-blue/60 transition-all">
         <div class="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between">
             <a href="#" class="group flex items-center gap-2 text-xl font-bold tracking-wide font-cute text-pastel-dark hover:text-pastel-vibrant transition-colors">
                 <span class="w-8 h-8 rounded-2xl bg-pastel-soft flex items-center justify-center text-pastel-vibrant text-base shadow-inner group-hover:rotate-12 transition-transform">✨</span>
@@ -151,9 +149,9 @@
     <main class="flex-grow">
         <!-- Hero Section -->
         <section class="relative py-12 md:py-20 bg-dots overflow-hidden">
-            <!-- Cute Decorative Floating Blobs -->
-            <div class="absolute top-10 left-5 w-24 h-24 bg-pastel-soft/40 rounded-full blur-2xl animate-float"></div>
-            <div class="absolute bottom-10 right-10 w-32 h-32 bg-pastel-pink/40 rounded-full blur-2xl animate-float-delayed"></div>
+            <!-- Cute Minimal Decorative Floating Blobs -->
+            <div class="absolute top-10 left-5 w-28 h-28 bg-pastel-soft/30 rounded-full blur-2xl animate-float"></div>
+            <div class="absolute bottom-10 right-10 w-36 h-36 bg-pastel-pink/30 rounded-full blur-2xl animate-float-delayed"></div>
 
             <div class="max-w-5xl mx-auto px-6 relative">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
@@ -195,26 +193,26 @@
                     <div class="md:col-span-5 flex justify-center">
                         <div class="relative w-full max-w-xs sm:max-w-sm">
                             
-                            <!-- Cute Floating Decorative Stickers -->
-                            <div class="absolute -top-5 -left-5 bg-white px-3.5 py-2 rounded-2xl shadow-lg border-2 border-pastel-blue z-20 text-xs font-bold text-pastel-vibrant animate-float flex items-center gap-1.5">
+                            <!-- Cute Floating Decorative Badges -->
+                            <div class="absolute -top-4 -left-4 bg-white px-3.5 py-2 rounded-2xl shadow-md border-2 border-pastel-blue z-20 text-xs font-bold text-pastel-vibrant animate-float flex items-center gap-1.5">
                                 <span>🌈</span> สดใส & มนุษยสัมพันธ์ดี
                             </div>
-                            <div class="absolute -bottom-4 -right-3 bg-pastel-yellow/90 text-amber-900 px-3.5 py-2 rounded-2xl shadow-lg border-2 border-amber-200 z-20 text-xs font-bold animate-float-delayed flex items-center gap-1.5">
+                            <div class="absolute -bottom-3 -right-2 bg-pastel-yellow/90 text-amber-900 px-3.5 py-2 rounded-2xl shadow-md border-2 border-amber-200 z-20 text-xs font-bold animate-float-delayed flex items-center gap-1.5">
                                 <span>👑</span> สภานักเรียนปี 2567
                             </div>
 
-                            <!-- Photo Card with Gradient Border -->
-                            <div class="relative bg-gradient-to-b from-pastel-blue to-white p-3 rounded-[2.5rem] shadow-xl border-4 border-white animate-float">
+                            <!-- Photo Card with Soft Pastel Border -->
+                            <div class="relative bg-gradient-to-b from-pastel-blue via-sky-50 to-white p-3.5 rounded-[2.5rem] shadow-lg border-4 border-white animate-float">
                                 <div class="bg-white rounded-[2rem] p-5 border-2 border-pastel-soft text-center space-y-4">
                                     
-                                    <!-- Avatar Image with Flower/Cute Frame Effect -->
-                                    <div class="relative w-40 h-40 mx-auto">
-                                        <div class="absolute -inset-2 bg-gradient-to-tr from-pastel-primary via-sky-200 to-pink-200 rounded-full blur-md opacity-70"></div>
+                                    <!-- Avatar Image with Soft Gradient Frame -->
+                                    <div class="relative w-44 h-44 mx-auto">
+                                        <div class="absolute -inset-2 bg-gradient-to-tr from-pastel-primary via-sky-200 to-pink-200 rounded-full blur-md opacity-60 animate-pulse-slow"></div>
                                         <div class="relative w-full h-full rounded-full border-4 border-white shadow-md overflow-hidden bg-pastel-blue">
                                             <img 
                                                 src="https://raw.githubusercontent.com/novsuphachaya-droid/Suphachaya/main/S__62980099.jpg" 
                                                 alt="ศุภชญา ศรีคำชอน (อีฟ)" 
-                                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-pastel-vibrant font-bold text-4xl bg-pastel-blue\'>อีฟ 🌸</div>';"
                                             >
                                         </div>
@@ -260,25 +258,25 @@
                         
                         <div class="cute-card p-6 rounded-3xl space-y-4">
                             <div class="grid grid-cols-2 gap-4 text-sm">
-                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                <div class="bg-pastel-blue/40 p-3.5 rounded-2xl border border-pastel-soft/60">
                                     <span class="text-pastel-vibrant block text-xs font-bold mb-1">ชื่อ - สกุล</span>
                                     <span class="font-semibold text-pastel-dark">ศุภชญา ศรีคำชอน</span>
                                 </div>
-                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                <div class="bg-pastel-blue/40 p-3.5 rounded-2xl border border-pastel-soft/60">
                                     <span class="text-pastel-vibrant block text-xs font-bold mb-1">ชื่อเล่น</span>
                                     <span class="font-semibold text-pastel-dark">อีฟ 🐣</span>
                                 </div>
-                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                <div class="bg-pastel-blue/40 p-3.5 rounded-2xl border border-pastel-soft/60">
                                     <span class="text-pastel-vibrant block text-xs font-bold mb-1">อายุ</span>
                                     <span class="font-semibold text-pastel-dark">19 ปี</span>
                                 </div>
-                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                <div class="bg-pastel-blue/40 p-3.5 rounded-2xl border border-pastel-soft/60">
                                     <span class="text-pastel-vibrant block text-xs font-bold mb-1">สัญชาติ</span>
                                     <span class="font-semibold text-pastel-dark">ไทย 🇹🇭</span>
                                 </div>
                             </div>
 
-                            <div class="bg-pastel-blue/40 p-4 rounded-2xl border border-pastel-soft/80 text-sm">
+                            <div class="bg-pastel-blue/30 p-4 rounded-2xl border border-pastel-soft/80 text-sm">
                                 <span class="text-pastel-vibrant block text-xs font-bold mb-1 flex items-center gap-1">
                                     <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ที่อยู่ปัจจุบัน
                                 </span>
@@ -291,13 +289,13 @@
                             <div class="pt-2">
                                 <span class="text-xs text-pastel-vibrant font-bold block mb-2">งานอดิเรก & สิ่งที่สนใจ 🌱</span>
                                 <div class="flex flex-wrap gap-2 text-xs">
-                                    <span class="px-3 py-1.5 bg-yellow-100 text-yellow-800 rounded-2xl font-medium border border-yellow-200">
+                                    <span class="px-3 py-1.5 bg-amber-50 text-amber-800 rounded-2xl font-medium border border-amber-200">
                                         ทำกิจกรรมสังคม 🤝
                                     </span>
-                                    <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded-2xl font-medium border border-emerald-200">
+                                    <span class="px-3 py-1.5 bg-emerald-50 text-emerald-800 rounded-2xl font-medium border border-emerald-200">
                                         พูดคุยแลกเปลี่ยน 💬
                                     </span>
-                                    <span class="px-3 py-1.5 bg-purple-100 text-purple-800 rounded-2xl font-medium border border-purple-200">
+                                    <span class="px-3 py-1.5 bg-purple-50 text-purple-800 rounded-2xl font-medium border border-purple-200">
                                         พัฒนาตนเอง 📚
                                     </span>
                                 </div>
@@ -348,10 +346,10 @@
         </section>
 
         <!-- Special Skills Section -->
-        <section id="skills" class="py-16 bg-gradient-to-b from-white to-[#F0F9FF]">
+        <section id="skills" class="py-16 bg-gradient-to-b from-white to-[#F8FAFC]">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
-                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3 py-1 rounded-full border border-pastel-soft">
+                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3.5 py-1.5 rounded-full border border-pastel-soft shadow-sm">
                         My Strengths 🌟
                     </span>
                     <h2 class="text-3xl font-bold text-pastel-dark font-cute">ความสามารถพิเศษ & จุดแข็ง</h2>
@@ -400,7 +398,7 @@
             <div class="max-w-5xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                     <div>
-                        <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3 py-1 rounded-full border border-pastel-soft">
+                        <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3.5 py-1.5 rounded-full border border-pastel-soft shadow-sm">
                             Activities & Projects 🎈
                         </span>
                         <h2 class="text-3xl font-bold text-pastel-dark font-cute mt-2">ประสบการณ์และผลงานกิจกรรม</h2>
@@ -476,7 +474,7 @@
         <section id="contact" class="py-16 bg-dots relative overflow-hidden">
             <div class="max-w-5xl mx-auto px-6 relative z-10">
                 <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-pastel-soft shadow-sm">
+                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-white px-3.5 py-1.5 rounded-full border border-pastel-soft shadow-sm">
                         Get In Touch 💌
                     </span>
                     <h2 class="text-3xl sm:text-4xl font-bold text-pastel-dark font-cute">ช่องทางการติดต่อ</h2>
