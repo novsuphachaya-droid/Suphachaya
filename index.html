@@ -3,42 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ศุภชญา ศรีคำชอน (อีฟ) - Portfolio</title>
+    <title>ศุภชญา ศรีคำชอน (อีฟ) - Cute Minimal Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Prompt -->
+    <!-- Google Fonts: Prompt & Mitr for cute friendly typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Custom Color Config & Typography (Soft Blue Theme) -->
+    <!-- Custom Color Config & Animations (Pastel Soft Blue Theme) -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        iceblue: {
-                            50: '#F0F7FF',
-                            100: '#E0F0FE',
-                            200: '#BAE0FD',
-                            300: '#7EC8F9',
-                        },
-                        sky: {
-                            400: '#38BDF8',
-                            500: '#0EA5E9',
-                            600: '#0284C7',
-                            700: '#0369A1',
-                        },
-                        deepblue: {
-                            800: '#075985',
-                            900: '#0C4A6E',
-                            950: '#082F49',
-                        },
+                        pastel: {
+                            blue: '#E0F2FE',
+                            soft: '#BAE6FD',
+                            primary: '#38BDF8',
+                            vibrant: '#0284C7',
+                            deep: '#0369A1',
+                            dark: '#0C4A6E',
+                            mint: '#E0F2FE',
+                            pink: '#FCE7F3',
+                            yellow: '#FEF08A',
+                        }
                     },
                     fontFamily: {
                         sans: ['Prompt', 'sans-serif'],
+                        cute: ['Mitr', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'float-delayed': 'float 4s ease-in-out 2s infinite',
+                        'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-10px) rotate(1.5deg)' },
+                        },
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        }
                     }
                 }
             }
@@ -47,124 +63,180 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #F0F7FF;
+            background-color: #F0F9FF;
             color: #0C4A6E;
         }
-        .bg-pattern {
-            background-image: radial-gradient(#BAE0FD 1.2px, transparent 1.2px);
-            background-size: 24px 24px;
+        .font-cute {
+            font-family: 'Mitr', sans-serif;
+        }
+        /* Cute Polka Dot Background Pattern */
+        .bg-dots {
+            background-image: radial-gradient(#BAE6FD 2px, transparent 2px);
+            background-size: 28px 28px;
+        }
+        /* Soft Floating Card Shadows */
+        .cute-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 2px solid #E0F2FE;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cute-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: #7DD3FC;
+            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.15), 0 8px 10px -6px rgba(56, 189, 248, 0.1);
+        }
+        .cute-badge {
+            background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
         }
     </style>
 </head>
-<body class="bg-iceblue-50 text-deepblue-900 selection:bg-sky-500 selection:text-white flex flex-col min-h-screen">
+<body class="bg-[#F0F9FF] text-pastel-dark selection:bg-pastel-primary selection:text-white flex flex-col min-h-screen relative overflow-x-hidden">
 
     <!-- Notification Toast for Copying -->
-    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 bg-deepblue-900 text-iceblue-50 px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 z-50 border border-sky-500/30">
-        <i data-lucide="check-circle" class="w-5 h-5 text-sky-400"></i>
-        <span id="toast-message" class="text-sm font-medium">คัดลอกข้อมูลเรียบร้อยแล้ว!</span>
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-24 opacity-0 transition-all duration-300 bg-white/95 text-pastel-dark px-6 py-4 rounded-3xl shadow-2xl flex items-center space-x-3 z-50 border-2 border-pastel-soft backdrop-blur-md">
+        <div class="p-2 bg-pastel-blue text-pastel-vibrant rounded-2xl">
+            <i data-lucide="sparkles" class="w-5 h-5 animate-spin"></i>
+        </div>
+        <span id="toast-message" class="text-sm font-semibold">คัดลอกข้อมูลเรียบร้อยแล้วค่ะ! ✨</span>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-iceblue-50/85 border-b border-iceblue-200/80 transition-all">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-tight text-deepblue-900 hover:text-sky-600 transition-colors">
-                SUPACHAYA<span class="text-sky-500">.</span>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/70 border-b-2 border-pastel-blue/60 transition-all">
+        <div class="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between">
+            <a href="#" class="group flex items-center gap-2 text-xl font-bold tracking-wide font-cute text-pastel-dark hover:text-pastel-vibrant transition-colors">
+                <span class="w-8 h-8 rounded-2xl bg-pastel-soft flex items-center justify-center text-pastel-vibrant text-base shadow-inner group-hover:rotate-12 transition-transform">✨</span>
+                <span>EVE<span class="text-pastel-primary">.</span>PORTFOLIO</span>
             </a>
             
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-deepblue-800">
-                <a href="#about" class="hover:text-sky-600 transition-colors">เกี่ยวกับฉัน</a>
-                <a href="#education" class="hover:text-sky-600 transition-colors">การศึกษา</a>
-                <a href="#skills" class="hover:text-sky-600 transition-colors">ความสามารถพิเศษ</a>
-                <a href="#experience" class="hover:text-sky-600 transition-colors">ประสบการณ์</a>
-                <a href="#contact" class="hover:text-sky-600 transition-colors">ติดต่อ</a>
+            <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-pastel-dark">
+                <a href="#about" class="hover:text-pastel-vibrant hover:scale-105 transition-all flex items-center gap-1.5">
+                    <span>🎀</span> เกี่ยวกับฉัน
+                </a>
+                <a href="#education" class="hover:text-pastel-vibrant hover:scale-105 transition-all flex items-center gap-1.5">
+                    <span>🎓</span> การศึกษา
+                </a>
+                <a href="#skills" class="hover:text-pastel-vibrant hover:scale-105 transition-all flex items-center gap-1.5">
+                    <span>⭐</span> จุดแข็ง
+                </a>
+                <a href="#experience" class="hover:text-pastel-vibrant hover:scale-105 transition-all flex items-center gap-1.5">
+                    <span>🎈</span> ประสบการณ์
+                </a>
+                <a href="#contact" class="hover:text-pastel-vibrant hover:scale-105 transition-all flex items-center gap-1.5">
+                    <span>💌</span> ติดต่อ
+                </a>
             </nav>
 
-            <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wider text-white uppercase bg-sky-600 rounded-full hover:bg-sky-500 transition-all shadow-sm hover:shadow-md">
-                <span>ติดต่อฉัน</span>
-                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold tracking-wider text-white bg-gradient-to-r from-pastel-primary to-pastel-vibrant rounded-full hover:shadow-lg hover:shadow-pastel-primary/30 hover:scale-105 transition-all shadow-md">
+                <span>ทักทายพูดคุย</span>
+                <i data-lucide="heart" class="w-4 h-4 fill-white animate-bounce-soft"></i>
             </a>
 
             <!-- Mobile Menu Toggle Button -->
-            <button id="menu-btn" class="md:hidden p-2 text-deepblue-900 focus:outline-none" aria-label="Toggle Menu">
-                <i data-lucide="menu" class="w-6 h-6"></i>
+            <button id="menu-btn" class="md:hidden p-2 text-pastel-dark focus:outline-none bg-pastel-blue rounded-2xl hover:bg-pastel-soft transition-colors" aria-label="Toggle Menu">
+                <i data-lucide="smile" class="w-6 h-6 text-pastel-vibrant"></i>
             </button>
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-6 bg-iceblue-100 border-b border-iceblue-200 space-y-3">
-            <a href="#about" class="block py-2 text-deepblue-900 hover:text-sky-600 font-medium">เกี่ยวกับฉัน</a>
-            <a href="#education" class="block py-2 text-deepblue-900 hover:text-sky-600 font-medium">การศึกษา</a>
-            <a href="#skills" class="block py-2 text-deepblue-900 hover:text-sky-600 font-medium">ความสามารถพิเศษ</a>
-            <a href="#experience" class="block py-2 text-deepblue-900 hover:text-sky-600 font-medium">ประสบการณ์</a>
-            <a href="#contact" class="block py-2 text-deepblue-900 hover:text-sky-600 font-medium">ติดต่อ</a>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-6 bg-white/95 border-b-2 border-pastel-blue space-y-3 font-medium text-sm">
+            <a href="#about" class="block py-2.5 px-4 rounded-2xl hover:bg-pastel-blue text-pastel-dark">🎀 เกี่ยวกับฉัน</a>
+            <a href="#education" class="block py-2.5 px-4 rounded-2xl hover:bg-pastel-blue text-pastel-dark">🎓 การศึกษา</a>
+            <a href="#skills" class="block py-2.5 px-4 rounded-2xl hover:bg-pastel-blue text-pastel-dark">⭐ จุดแข็งและทักษะ</a>
+            <a href="#experience" class="block py-2.5 px-4 rounded-2xl hover:bg-pastel-blue text-pastel-dark">🎈 ประสบการณ์กิจกรรม</a>
+            <a href="#contact" class="block py-2.5 px-4 rounded-2xl hover:bg-pastel-blue text-pastel-dark">💌 ติดต่อฉัน</a>
         </div>
     </header>
 
     <main class="flex-grow">
         <!-- Hero Section -->
-        <section class="relative py-16 md:py-24 bg-pattern overflow-hidden">
-            <div class="max-w-5xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <section class="relative py-12 md:py-20 bg-dots overflow-hidden">
+            <!-- Cute Decorative Floating Blobs -->
+            <div class="absolute top-10 left-5 w-24 h-24 bg-pastel-soft/40 rounded-full blur-2xl animate-float"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-pastel-pink/40 rounded-full blur-2xl animate-float-delayed"></div>
+
+            <div class="max-w-5xl mx-auto px-6 relative">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
                     
-                    <div class="md:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-iceblue-200/80 text-deepblue-900 text-xs font-medium border border-iceblue-300">
-                            <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-                            พร้อมเรียนรู้และร่วมงานกับคุณ
+                    <!-- Left Hero Text -->
+                    <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border-2 border-pastel-soft text-pastel-deep text-xs font-semibold shadow-sm animate-bounce-soft">
+                            <span class="text-base">🌸</span>
+                            <span>สวัสดีค่ะ ยินดีต้อนรับสู่โลกของอีฟ!</span>
                         </div>
 
-                        <div class="space-y-2">
-                            <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-deepblue-950 leading-tight">
+                        <div class="space-y-3">
+                            <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-pastel-dark font-cute leading-tight">
                                 ศุภชญา ศรีคำชอน
                             </h1>
-                            <p class="text-xl sm:text-2xl font-medium text-sky-700">
-                                ชื่อเล่น: <span class="text-sky-600 font-semibold">อีฟ</span> (Eve)
-                            </p>
+                            <div class="flex items-center justify-center md:justify-start gap-3">
+                                <span class="text-lg sm:text-2xl font-bold text-pastel-vibrant bg-pastel-blue px-4 py-1.5 rounded-2xl border border-pastel-soft inline-block transform -rotate-1">
+                                    ชื่อเล่น: อีฟ (Eve) ☁️
+                                </span>
+                            </div>
                         </div>
 
-                        <p class="text-deepblue-800 leading-relaxed font-light text-base sm:text-lg max-w-xl">
-                            มุ่งมั่นขับเคลื่อนกิจกรรมทางสังคม มีทักษะด้านการนำกระบวนการ มนุษยสัมพันธ์ดีเยี่ยม พร้อมเป็นทั้งผู้นำและผู้ตามที่ดีในการทำงานร่วมกับองค์กร
+                        <p class="text-pastel-dark/80 leading-relaxed font-light text-base sm:text-lg max-w-xl mx-auto md:mx-0">
+                            เด็กกิจกรรมผู้มีรอยยิ้มและพลังบวก! มุ่งมั่นขับเคลื่อนงานสังคม มีทักษะวิทยากรกระบวนการ และชอบสร้างบรรยากาศที่เป็นมิตร พร้อมเรียนรู้และเติบโตไปด้วยกันค่ะ 💙
                         </p>
 
-                        <div class="pt-4 flex flex-wrap gap-4 items-center">
-                            <a href="#contact" class="px-6 py-3 bg-sky-600 text-white font-medium rounded-2xl hover:bg-sky-500 transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2">
-                                <i data-lucide="mail" class="w-4 h-4"></i>
-                                ติดต่อร่วมงาน
+                        <div class="pt-2 flex flex-wrap gap-4 justify-center md:justify-start items-center">
+                            <a href="#contact" class="px-7 py-3.5 bg-gradient-to-r from-pastel-primary to-pastel-vibrant text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-pastel-primary/30 hover:scale-105 transition-all shadow-md inline-flex items-center gap-2.5">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                ติดต่อร่วมงานกับอีฟ
                             </a>
-                            <a href="#experience" class="px-6 py-3 bg-white/80 text-deepblue-900 font-medium rounded-2xl hover:bg-white transition-all border border-iceblue-200 inline-flex items-center gap-2 shadow-sm">
-                                ดูผลงาน & กิจกรรม
-                                <i data-lucide="arrow-down" class="w-4 h-4 text-sky-600"></i>
+                            <a href="#experience" class="px-6 py-3.5 bg-white text-pastel-dark font-bold rounded-2xl hover:bg-pastel-blue transition-all border-2 border-pastel-soft inline-flex items-center gap-2 shadow-sm hover:scale-105">
+                                ดูผลงาน & กิจกรรม ✨
                             </a>
                         </div>
                     </div>
 
-                    <!-- Profile Avatar Card -->
+                    <!-- Right Cute Profile Card -->
                     <div class="md:col-span-5 flex justify-center">
                         <div class="relative w-full max-w-xs sm:max-w-sm">
-                            <div class="absolute -inset-2 bg-gradient-to-r from-sky-400 to-iceblue-300 rounded-3xl blur-lg opacity-60 transform rotate-2"></div>
-                            <div class="relative bg-white border border-iceblue-200 rounded-3xl p-6 shadow-xl text-center space-y-4">
-                                <div class="w-36 h-36 mx-auto rounded-full bg-iceblue-100 border-4 border-sky-400/40 shadow-md overflow-hidden relative group">
-                                    <img 
-                                        src="https://raw.githubusercontent.com/novsuphachaya-droid/Suphachaya/main/S__62980099.jpg" 
-                                        alt="ศุภชญา ศรีคำชอน (อีฟ)" 
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                        onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-sky-700 font-bold text-4xl bg-iceblue-100\'>อีฟ</div>';"
-                                    >
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-deepblue-950 text-lg">ศุภชญา ศรีคำชอน</h3>
-                                    <p class="text-xs text-sky-700">อายุ 19 ปี • สัญชาติไทย</p>
-                                </div>
-                                <div class="border-t border-iceblue-100 pt-3 text-xs text-deepblue-800 space-y-2">
-                                    <div class="flex items-center justify-center gap-2">
-                                        <i data-lucide="map-pin" class="w-4 h-4 text-sky-600"></i>
-                                        <span>จ.ขอนแก่น, ประเทศไทย</span>
+                            
+                            <!-- Cute Floating Decorative Stickers -->
+                            <div class="absolute -top-5 -left-5 bg-white px-3.5 py-2 rounded-2xl shadow-lg border-2 border-pastel-blue z-20 text-xs font-bold text-pastel-vibrant animate-float flex items-center gap-1.5">
+                                <span>🌈</span> สดใส & มนุษยสัมพันธ์ดี
+                            </div>
+                            <div class="absolute -bottom-4 -right-3 bg-pastel-yellow/90 text-amber-900 px-3.5 py-2 rounded-2xl shadow-lg border-2 border-amber-200 z-20 text-xs font-bold animate-float-delayed flex items-center gap-1.5">
+                                <span>👑</span> สภานักเรียนปี 2567
+                            </div>
+
+                            <!-- Photo Card with Gradient Border -->
+                            <div class="relative bg-gradient-to-b from-pastel-blue to-white p-3 rounded-[2.5rem] shadow-xl border-4 border-white animate-float">
+                                <div class="bg-white rounded-[2rem] p-5 border-2 border-pastel-soft text-center space-y-4">
+                                    
+                                    <!-- Avatar Image with Flower/Cute Frame Effect -->
+                                    <div class="relative w-40 h-40 mx-auto">
+                                        <div class="absolute -inset-2 bg-gradient-to-tr from-pastel-primary via-sky-200 to-pink-200 rounded-full blur-md opacity-70"></div>
+                                        <div class="relative w-full h-full rounded-full border-4 border-white shadow-md overflow-hidden bg-pastel-blue">
+                                            <img 
+                                                src="https://raw.githubusercontent.com/novsuphachaya-droid/Suphachaya/main/S__62980099.jpg" 
+                                                alt="ศุภชญา ศรีคำชอน (อีฟ)" 
+                                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                                onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-pastel-vibrant font-bold text-4xl bg-pastel-blue\'>อีฟ 🌸</div>';"
+                                            >
+                                        </div>
                                     </div>
-                                    <div class="flex items-center justify-center gap-2">
-                                        <i data-lucide="award" class="w-4 h-4 text-sky-600"></i>
-                                        <span>คณะกรรมการสภานักเรียนปี 2567</span>
+
+                                    <div>
+                                        <h3 class="font-bold text-pastel-dark text-lg font-cute">ศุภชญา ศรีคำชอน</h3>
+                                        <p class="text-xs text-pastel-vibrant font-medium mt-0.5">อายุ 19 ปี • ขอนแก่น 📍</p>
+                                    </div>
+
+                                    <!-- Quick Tags -->
+                                    <div class="flex flex-wrap justify-center gap-2 pt-1 text-xs">
+                                        <span class="px-3 py-1 bg-pastel-blue text-pastel-vibrant font-semibold rounded-full border border-pastel-soft">
+                                            วิทยากร 🎤
+                                        </span>
+                                        <span class="px-3 py-1 bg-pink-100 text-pink-700 font-semibold rounded-full border border-pink-200">
+                                            จิตอาสา 💕
+                                        </span>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -173,80 +245,101 @@
         </section>
 
         <!-- Personal Info & Education Section -->
-        <section id="about" class="py-16 bg-iceblue-100/60 border-t border-iceblue-200/80">
+        <section id="about" class="py-16 bg-white border-t-2 border-pastel-blue/80 relative">
             <div class="max-w-5xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     
-                    <!-- About Me -->
-                    <div class="space-y-6">
+                    <!-- Cute About Me Card -->
+                    <div class="space-y-5">
                         <div class="flex items-center gap-3">
-                            <div class="p-2.5 bg-sky-600 text-white rounded-xl shadow-sm">
-                                <i data-lucide="user" class="w-5 h-5"></i>
+                            <div class="w-10 h-10 bg-pastel-blue text-pastel-vibrant rounded-2xl flex items-center justify-center font-bold text-lg shadow-sm border border-pastel-soft">
+                                🎀
                             </div>
-                            <h2 class="text-2xl font-bold text-deepblue-950">ข้อมูลส่วนตัว</h2>
+                            <h2 class="text-2xl font-bold text-pastel-dark font-cute">ข้อมูลส่วนตัว (About Me)</h2>
                         </div>
                         
-                        <div class="bg-white p-6 rounded-2xl border border-iceblue-200 shadow-sm space-y-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <span class="text-sky-700 block text-xs">ชื่อ - สกุล</span>
-                                    <span class="font-semibold text-deepblue-950">ศุภชญา ศรีคำชอน</span>
+                        <div class="cute-card p-6 rounded-3xl space-y-4">
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                    <span class="text-pastel-vibrant block text-xs font-bold mb-1">ชื่อ - สกุล</span>
+                                    <span class="font-semibold text-pastel-dark">ศุภชญา ศรีคำชอน</span>
                                 </div>
-                                <div>
-                                    <span class="text-sky-700 block text-xs">ชื่อเล่น</span>
-                                    <span class="font-semibold text-deepblue-950">อีฟ</span>
+                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                    <span class="text-pastel-vibrant block text-xs font-bold mb-1">ชื่อเล่น</span>
+                                    <span class="font-semibold text-pastel-dark">อีฟ 🐣</span>
                                 </div>
-                                <div>
-                                    <span class="text-sky-700 block text-xs">อายุ</span>
-                                    <span class="font-semibold text-deepblue-950">19 ปี</span>
+                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                    <span class="text-pastel-vibrant block text-xs font-bold mb-1">อายุ</span>
+                                    <span class="font-semibold text-pastel-dark">19 ปี</span>
                                 </div>
-                                <div>
-                                    <span class="text-sky-700 block text-xs">สัญชาติ</span>
-                                    <span class="font-semibold text-deepblue-950">ไทย</span>
+                                <div class="bg-pastel-blue/50 p-3.5 rounded-2xl border border-pastel-soft/60">
+                                    <span class="text-pastel-vibrant block text-xs font-bold mb-1">สัญชาติ</span>
+                                    <span class="font-semibold text-pastel-dark">ไทย 🇹🇭</span>
                                 </div>
                             </div>
-                            <div class="pt-2 border-t border-iceblue-100">
-                                <span class="text-sky-700 block text-xs">ที่อยู่ปัจจุบัน</span>
-                                <span class="font-medium text-deepblue-900 text-sm">
+
+                            <div class="bg-pastel-blue/40 p-4 rounded-2xl border border-pastel-soft/80 text-sm">
+                                <span class="text-pastel-vibrant block text-xs font-bold mb-1 flex items-center gap-1">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ที่อยู่ปัจจุบัน
+                                </span>
+                                <span class="font-medium text-pastel-dark leading-relaxed">
                                     15 หมู่ 4 บ้านป่างิ้ว ต.หินตั้ง อ.บ้านไผ่ จ.ขอนแก่น
                                 </span>
+                            </div>
+
+                            <!-- Cute Hobbies Tag -->
+                            <div class="pt-2">
+                                <span class="text-xs text-pastel-vibrant font-bold block mb-2">งานอดิเรก & สิ่งที่สนใจ 🌱</span>
+                                <div class="flex flex-wrap gap-2 text-xs">
+                                    <span class="px-3 py-1.5 bg-yellow-100 text-yellow-800 rounded-2xl font-medium border border-yellow-200">
+                                        ทำกิจกรรมสังคม 🤝
+                                    </span>
+                                    <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded-2xl font-medium border border-emerald-200">
+                                        พูดคุยแลกเปลี่ยน 💬
+                                    </span>
+                                    <span class="px-3 py-1.5 bg-purple-100 text-purple-800 rounded-2xl font-medium border border-purple-200">
+                                        พัฒนาตนเอง 📚
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Education -->
-                    <div id="education" class="space-y-6">
+                    <!-- Cute Education Timeline -->
+                    <div id="education" class="space-y-5">
                         <div class="flex items-center gap-3">
-                            <div class="p-2.5 bg-sky-600 text-white rounded-xl shadow-sm">
-                                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            <div class="w-10 h-10 bg-pastel-blue text-pastel-vibrant rounded-2xl flex items-center justify-center font-bold text-lg shadow-sm border border-pastel-soft">
+                                🎓
                             </div>
-                            <h2 class="text-2xl font-bold text-deepblue-950">ประวัติการศึกษา</h2>
+                            <h2 class="text-2xl font-bold text-pastel-dark font-cute">ประวัติการศึกษา (Education)</h2>
                         </div>
 
-                        <div class="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-iceblue-300">
+                        <div class="relative pl-6 space-y-6 before:absolute before:left-3 before:top-3 before:bottom-3 before:w-1 before:bg-pastel-soft before:rounded-full">
+                            
                             <!-- High School 2 -->
                             <div class="relative">
-                                <div class="absolute -left-[1.85rem] top-1.5 w-3 h-3 rounded-full bg-sky-500 ring-4 ring-iceblue-50"></div>
-                                <div class="bg-white p-5 rounded-2xl border border-iceblue-200 shadow-sm">
-                                    <span class="inline-block px-2.5 py-0.5 rounded text-xs font-semibold bg-iceblue-100 text-sky-700 mb-1">
+                                <div class="absolute -left-[1.85rem] top-1.5 w-5 h-5 rounded-full bg-pastel-primary ring-4 ring-white shadow-sm flex items-center justify-center text-[10px] text-white">✨</div>
+                                <div class="cute-card p-5 rounded-3xl">
+                                    <span class="inline-block px-3 py-1 rounded-xl text-xs font-bold bg-pastel-blue text-pastel-vibrant mb-2 border border-pastel-soft">
                                         มัธยมศึกษาปีที่ 4 - 6
                                     </span>
-                                    <h3 class="font-bold text-deepblue-950">โรงเรียนบ้านไผ่พิทยาคม</h3>
-                                    <p class="text-xs text-sky-800">สำเร็จการศึกษาระดับมัธยมศึกษาตอนปลาย</p>
+                                    <h3 class="font-bold text-pastel-dark text-base">โรงเรียนบ้านไผ่พิทยาคม</h3>
+                                    <p class="text-xs text-pastel-dark/70 mt-1">สำเร็จการศึกษาระดับมัธยมศึกษาตอนปลาย</p>
                                 </div>
                             </div>
 
                             <!-- High School 1 -->
                             <div class="relative">
-                                <div class="absolute -left-[1.85rem] top-1.5 w-3 h-3 rounded-full bg-iceblue-300 ring-4 ring-iceblue-50"></div>
-                                <div class="bg-white p-5 rounded-2xl border border-iceblue-200 shadow-sm">
-                                    <span class="inline-block px-2.5 py-0.5 rounded text-xs font-semibold bg-iceblue-100 text-sky-700 mb-1">
+                                <div class="absolute -left-[1.85rem] top-1.5 w-5 h-5 rounded-full bg-pastel-soft ring-4 ring-white shadow-sm flex items-center justify-center text-[10px] text-pastel-vibrant">🌱</div>
+                                <div class="cute-card p-5 rounded-3xl">
+                                    <span class="inline-block px-3 py-1 rounded-xl text-xs font-bold bg-pastel-blue text-pastel-vibrant mb-2 border border-pastel-soft">
                                         มัธยมศึกษาปีที่ 1 - 3
                                     </span>
-                                    <h3 class="font-bold text-deepblue-950">โรงเรียนบ้านป่างิ้วหนองฮี (บ.ผ.ค.)</h3>
-                                    <p class="text-xs text-sky-800">สำเร็จการศึกษาระดับมัธยมศึกษาตอนต้น</p>
+                                    <h3 class="font-bold text-pastel-dark text-base">โรงเรียนบ้านป่างิ้วหนองฮี (บ.ผ.ค.)</h3>
+                                    <p class="text-xs text-pastel-dark/70 mt-1">สำเร็จการศึกษาระดับมัธยมศึกษาตอนต้น</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -254,187 +347,196 @@
             </div>
         </section>
 
-        <!-- Special Skills & Capabilities Section -->
-        <section id="skills" class="py-16 bg-iceblue-50">
+        <!-- Special Skills Section -->
+        <section id="skills" class="py-16 bg-gradient-to-b from-white to-[#F0F9FF]">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
-                    <h2 class="text-3xl font-bold text-deepblue-950">ความสามารถพิเศษ & จุดแข็ง</h2>
-                    <p class="text-sky-700 text-sm">ทักษะความพร้อมด้านมนุษยสัมพันธ์และการทำงานร่วมกับผู้อื่น</p>
+                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3 py-1 rounded-full border border-pastel-soft">
+                        My Strengths 🌟
+                    </span>
+                    <h2 class="text-3xl font-bold text-pastel-dark font-cute">ความสามารถพิเศษ & จุดแข็ง</h2>
+                    <p class="text-pastel-dark/70 text-sm">ทักษะที่พร้อมสำหรับการทำงานร่วมกันและการนำกระบวนการ</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 hover:border-sky-400 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
-                            <i data-lucide="users" class="w-6 h-6"></i>
+                    <!-- Skill 1 -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 group">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-tr from-pastel-blue to-sky-100 text-pastel-vibrant rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-pastel-soft group-hover:scale-110 transition-transform">
+                            🤝
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">มนุษยสัมพันธ์ดีเยี่ยม</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            สามารถสร้างความสัมพันธ์อันดี ปรับตัวเข้ากับกลุ่มคนหลากหลายได้อย่างรวดเร็ว และทำงานร่วมกับผู้อื่นได้อย่างราบรื่น
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">มนุษยสัมพันธ์ดีเยี่ยม</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            ปรับตัวเข้ากับกลุ่มคนได้รวดเร็ว ยิ้มแย้มแจ่มใส สร้างบรรยากาศการทำงานที่เป็นมิตรและเป็นกันเอง
                         </p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 hover:border-sky-400 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
-                            <i data-lucide="crown" class="w-6 h-6"></i>
+                    <!-- Skill 2 -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 group">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-tr from-pastel-blue to-sky-100 text-pastel-vibrant rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-pastel-soft group-hover:scale-110 transition-transform">
+                            👑
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">ภาวะผู้นำและผู้ตามที่ดี</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            พร้อมเป็นผู้นำในการขับเคลื่อนงานให้สำเร็จลุล่วง ขณะเดียวกันก็เป็นผู้ตามที่เปิดรับฟัง รับผิดชอบหน้าที่อย่างเคร่งครัด
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">ผู้นำและผู้ตามที่ดี</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            พร้อมนำทีมขับเคลื่อนงานด้วยความรับผิดชอบ และพร้อมเป็นผู้ตามที่รับฟัง เปิดรับความคิดเห็นของผู้อื่น
                         </p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 hover:border-sky-400 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md">
-                        <div class="w-12 h-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
-                            <i data-lucide="presentation" class="w-6 h-6"></i>
+                    <!-- Skill 3 -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 group">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-tr from-pastel-blue to-sky-100 text-pastel-vibrant rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-pastel-soft group-hover:scale-110 transition-transform">
+                            🎤
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">วิทยากรกระบวนการ</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            สื่อสารสร้างความเข้าใจ และดำเนินกิจกรรมกระบวนการเรียนรู้เพื่อสร้างการมีส่วนร่วมในระดับกลุ่มและชุมชน
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">วิทยากรกระบวนการ</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            สื่อสารสร้างความเข้าใจ นำกิจกรรมกลุ่ม ดำเนินกระบวนการเรียนรู้เพื่อให้ผู้เข้าร่วมมีส่วนร่วมอย่างสนุกสนาน
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience & Projects Section -->
-        <section id="experience" class="py-16 bg-iceblue-100/60 border-t border-iceblue-200/80">
+        <!-- Experience & Activities Section -->
+        <section id="experience" class="py-16 bg-white border-t-2 border-pastel-blue/80">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                     <div>
-                        <span class="text-sky-600 text-xs font-bold uppercase tracking-wider">Experience & Activities</span>
-                        <h2 class="text-3xl font-bold text-deepblue-950">ประสบการณ์และผลงานกิจกรรม</h2>
+                        <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-pastel-blue px-3 py-1 rounded-full border border-pastel-soft">
+                            Activities & Projects 🎈
+                        </span>
+                        <h2 class="text-3xl font-bold text-pastel-dark font-cute mt-2">ประสบการณ์และผลงานกิจกรรม</h2>
                     </div>
-                    <p class="text-sky-700 text-sm max-w-md">
-                        ความมุ่งมั่นในการทำประโยชน์เพื่อส่วนรวม การพัฒนาตนเองผ่านกิจกรรมและโครงการสังคมต่างๆ
+                    <p class="text-pastel-dark/70 text-sm max-w-md">
+                        ความตั้งใจในการพัฒนาตนเองผ่านกิจกรรมพัฒนาสังคม โรงเรียน และชุมชน
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                     <!-- Item 1 -->
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 bg-iceblue-100 text-sky-700 rounded-xl">
-                                <i data-lucide="heart-handshake" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-xs bg-iceblue-200 text-sky-800 font-semibold px-2.5 py-1 rounded-full">
+                    <div class="cute-card p-6 rounded-3xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">💖</span>
+                            <span class="text-xs bg-pastel-blue text-pastel-vibrant font-bold px-3 py-1 rounded-full border border-pastel-soft">
                                 แกนนำกิจกรรม
                             </span>
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">แกนนำขับเคลื่อนพันธกิจด้านสังคมและสาธารณสุข</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            ทำหน้าที่เป็นแกนนำหลักในการจัดและขับเคลื่อนพันธกิจด้านสังคม และงานสาธารณสุขทั้งภายในสถานศึกษาและส่งเสริมชุมชนโดยรอบ
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">แกนนำขับเคลื่อนงานสังคมและสาธารณสุข</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            รับหน้าที่เป็นแกนนำหลักจัดกิจกรรมพันธกิจด้านสังคม และส่งเสริมสุขภาพสาธารณสุข ทั้งในสถานศึกษาและชุมชนรอบข้าง
                         </p>
                     </div>
 
                     <!-- Item 2 -->
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 bg-iceblue-100 text-sky-700 rounded-xl">
-                                <i data-lucide="award" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-xs bg-iceblue-200 text-sky-800 font-semibold px-2.5 py-1 rounded-full">
+                    <div class="cute-card p-6 rounded-3xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">🏛️</span>
+                            <span class="text-xs bg-pastel-blue text-pastel-vibrant font-bold px-3 py-1 rounded-full border border-pastel-soft">
                                 ปีการศึกษา 2567
                             </span>
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">คณะกรรมการสภานักเรียน</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            ดำรงตำแหน่งคณะกรรมการสภานักเรียน ร่วมวางแผน วางระเบียบ และดำเนินงานกิจกรรมต่างๆ เพื่อพัฒนาศักยภาพนักเรียนในโรงเรียน
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">คณะกรรมการสภานักเรียน</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            ดำรงตำแหน่งคณะกรรมการสภานักเรียน วางแผน จัดกิจกรรม และดูแลสวัสดิการนักเรียนเพื่อสร้างสรรค์บรรยากาศที่ดีในโรงเรียน
                         </p>
                     </div>
 
                     <!-- Item 3 -->
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 bg-iceblue-100 text-sky-700 rounded-xl">
-                                <i data-lucide="mic" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-xs bg-iceblue-200 text-sky-800 font-semibold px-2.5 py-1 rounded-full">
+                    <div class="cute-card p-6 rounded-3xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">📢</span>
+                            <span class="text-xs bg-pastel-blue text-pastel-vibrant font-bold px-3 py-1 rounded-full border border-pastel-soft">
                                 ประจำปี 2567
                             </span>
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">ผู้ช่วยวิทยากรกระบวนการ</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            ผู้ช่วยวิทยากรในโครงการ "ครอบครัวพอเพียงสู่สถานศึกษาและชุมชน" ถ่ายทอดความรู้และนำกระบวนการเรียนรู้เพื่อสร้างความเข้มแข็ง
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">ผู้ช่วยวิทยากรกระบวนการ</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            ร่วมทำหน้าที่ในโครงการ "ครอบครัวพอเพียงสู่สถานศึกษาและชุมชน" ช่วยถ่ายทอดความรู้และดำเนินกิจกรรมการเรียนรู้ร่วมกับชุมชน
                         </p>
                     </div>
 
                     <!-- Item 4 -->
-                    <div class="bg-white p-6 rounded-2xl border border-iceblue-200 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="p-3 bg-iceblue-100 text-sky-700 rounded-xl">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-xs bg-iceblue-200 text-sky-800 font-semibold px-2.5 py-1 rounded-full">
-                                ผ่านการอบรม
+                    <div class="cute-card p-6 rounded-3xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">🛡️</span>
+                            <span class="text-xs bg-pastel-blue text-pastel-vibrant font-bold px-3 py-1 rounded-full border border-pastel-soft">
+                                การอบรม & สัมมนา
                             </span>
                         </div>
-                        <h3 class="font-bold text-deepblue-950 text-lg mb-2">ผู้นำเยาวชน & กิจกรรมต้านภัยยาเสพติด</h3>
-                        <p class="text-deepblue-800 text-sm leading-relaxed">
-                            เข้าร่วมโครงการเสริมสร้างกระบวนการผู้นำเยาวชนต้านทุจริต และผ่านการอบรมโครงการ "รวมพลังหนองน้ำใสต้านภัยยาเสพติด"
+                        <h3 class="font-bold text-pastel-dark text-lg font-cute">ผู้นำเยาวชนต้านทุจริต & ต้านภัยยาเสพติด</h3>
+                        <p class="text-pastel-dark/80 text-sm leading-relaxed font-light">
+                            ผ่านการอบรมโครงการเสริมสร้างกระบวนการผู้นำเยาวชนต้านทุจริต และโครงการ "รวมพลังหนองน้ำใสต้านภัยยาเสพติด"
                         </p>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-deepblue-950 text-white relative overflow-hidden">
+        <section id="contact" class="py-16 bg-dots relative overflow-hidden">
             <div class="max-w-5xl mx-auto px-6 relative z-10">
-                <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
-                    <span class="text-sky-400 text-xs font-bold uppercase tracking-widest">Get In Touch</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold">ช่องทางการติดต่อ</h2>
-                    <p class="text-iceblue-200 text-sm font-light">
-                        สนใจร่วมงานหรือสอบถามข้อมูลเพิ่มเติม สามารถติดต่อผ่านช่องทางด้านล่างได้ทันที
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                    <span class="text-pastel-vibrant text-xs font-bold uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-pastel-soft shadow-sm">
+                        Get In Touch 💌
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-pastel-dark font-cute">ช่องทางการติดต่อ</h2>
+                    <p class="text-pastel-dark/70 text-sm">
+                        พร้อมที่จะร่วมงานและทำกิจกรรมร่วมกันค่ะ สามารถติดต่ออีฟได้ผ่านช่องทางด้านล่างนี้เลยนะคะ ✨
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Phone -->
-                    <div class="bg-deepblue-900/60 p-6 rounded-2xl border border-sky-500/20 text-center space-y-3 hover:border-sky-500/40 transition-all">
-                        <div class="w-12 h-12 mx-auto bg-sky-500/20 text-sky-300 rounded-full flex items-center justify-center">
-                            <i data-lucide="phone" class="w-5 h-5"></i>
+                    
+                    <!-- Phone Card -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 bg-white/90">
+                        <div class="w-12 h-12 mx-auto bg-pastel-blue text-pastel-vibrant rounded-2xl flex items-center justify-center text-xl shadow-sm">
+                            📞
                         </div>
-                        <h3 class="font-semibold text-iceblue-100">เบอร์โทรศัพท์</h3>
-                        <p class="text-lg font-bold text-white">082-921-5014</p>
-                        <button onclick="copyToClipboard('0829215014', 'คัดลอกเบอร์โทรเรียบร้อย!')" class="inline-flex items-center gap-1.5 text-xs text-sky-300 hover:text-white pt-2 transition-colors">
+                        <h3 class="font-bold text-pastel-dark">เบอร์โทรศัพท์</h3>
+                        <p class="text-lg font-bold text-pastel-vibrant">082-921-5014</p>
+                        <button onclick="copyToClipboard('0829215014', 'คัดลอกเบอร์โทรเรียบร้อยแล้วค่ะ! 📞')" class="w-full py-2 bg-pastel-blue hover:bg-pastel-soft text-pastel-vibrant text-xs font-bold rounded-2xl transition-colors flex items-center justify-center gap-1.5">
                             <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                             <span>คัดลอกเบอร์โทร</span>
                         </button>
                     </div>
 
-                    <!-- Email -->
-                    <div class="bg-deepblue-900/60 p-6 rounded-2xl border border-sky-500/20 text-center space-y-3 hover:border-sky-500/40 transition-all">
-                        <div class="w-12 h-12 mx-auto bg-sky-500/20 text-sky-300 rounded-full flex items-center justify-center">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
+                    <!-- Email Card -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 bg-white/90">
+                        <div class="w-12 h-12 mx-auto bg-pastel-blue text-pastel-vibrant rounded-2xl flex items-center justify-center text-xl shadow-sm">
+                            📧
                         </div>
-                        <h3 class="font-semibold text-iceblue-100">อีเมล</h3>
-                        <p class="text-sm font-semibold text-white break-all">nov.Suphachaya@gmail.com</p>
-                        <button onclick="copyToClipboard('nov.Suphachaya@gmail.com', 'คัดลอกอีเมลเรียบร้อย!')" class="inline-flex items-center gap-1.5 text-xs text-sky-300 hover:text-white pt-2 transition-colors">
+                        <h3 class="font-bold text-pastel-dark">อีเมล</h3>
+                        <p class="text-sm font-bold text-pastel-vibrant break-all">nov.Suphachaya@gmail.com</p>
+                        <button onclick="copyToClipboard('nov.Suphachaya@gmail.com', 'คัดลอกอีเมลเรียบร้อยแล้วค่ะ! 📧')" class="w-full py-2 bg-pastel-blue hover:bg-pastel-soft text-pastel-vibrant text-xs font-bold rounded-2xl transition-colors flex items-center justify-center gap-1.5">
                             <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                             <span>คัดลอกอีเมล</span>
                         </button>
                     </div>
 
-                    <!-- Address -->
-                    <div class="bg-deepblue-900/60 p-6 rounded-2xl border border-sky-500/20 text-center space-y-3 hover:border-sky-500/40 transition-all">
-                        <div class="w-12 h-12 mx-auto bg-sky-500/20 text-sky-300 rounded-full flex items-center justify-center">
-                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    <!-- Address Card -->
+                    <div class="cute-card p-6 rounded-3xl text-center space-y-3 bg-white/90">
+                        <div class="w-12 h-12 mx-auto bg-pastel-blue text-pastel-vibrant rounded-2xl flex items-center justify-center text-xl shadow-sm">
+                            🏠
                         </div>
-                        <h3 class="font-semibold text-iceblue-100">ที่อยู่</h3>
-                        <p class="text-xs text-iceblue-200 leading-relaxed">
+                        <h3 class="font-bold text-pastel-dark">ที่อยู่</h3>
+                        <p class="text-xs text-pastel-dark/80 leading-relaxed font-light">
                             15 หมู่ 4 บ้านป่างิ้ว ต.หินตั้ง<br>อ.บ้านไผ่ จ.ขอนแก่น
                         </p>
+                        <div class="pt-1 text-[11px] font-semibold text-pastel-vibrant bg-pastel-blue/60 py-1 rounded-xl">
+                            จังหวัดขอนแก่น 📍
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-deepblue-950 border-t border-deepblue-800/80 py-8 text-iceblue-300 text-xs text-center">
+    <footer class="bg-white border-t-2 border-pastel-blue py-8 text-pastel-dark/70 text-xs text-center">
         <div class="max-w-5xl mx-auto px-6 space-y-2">
-            <p>© 2026 ศุภชญา ศรีคำชอน (อีฟ) - All Rights Reserved.</p>
-            <p class="text-sky-600/70">ออกแบบสำหรับอัปโหลดผ่าน GitHub Pages ด้วย HTML & Tailwind CSS</p>
+            <p class="font-cute text-sm text-pastel-dark font-medium">© 2026 Supachaya Srikamchon (Eve) • Made with Love 💙</p>
+            <p class="text-pastel-dark/60">ออกแบบสไตล์ Cute Minimal สำหรับอัปโหลดบน GitHub Pages</p>
         </div>
     </footer>
 
@@ -467,7 +569,7 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
 
-            showToast(customMsg || 'คัดลอกลงคลิปบอร์ดแล้ว!');
+            showToast(customMsg || 'คัดลอกลงคลิปบอร์ดแล้วค่ะ! ✨');
         }
 
         // Show Toast Notification
@@ -476,12 +578,12 @@
             const toastMsg = document.getElementById('toast-message');
 
             toastMsg.textContent = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.remove('translate-y-24', 'opacity-0');
             toast.classList.add('translate-y-0', 'opacity-100');
 
             setTimeout(() => {
                 toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-24', 'opacity-0');
             }, 3000);
         }
     </script>
